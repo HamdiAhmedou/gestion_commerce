@@ -1,0 +1,56 @@
+name: gestion_commerce
+description: Application de gestion de commerce - MVC + Provider + SQLite
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  # State management
+  provider: ^6.1.2
+
+  # Local database (offline)
+  sqflite: ^2.3.2
+  path: ^1.9.0
+
+  # API calls
+  http: ^1.2.1
+
+  # Navigation
+  go_router: ^13.2.0
+
+  # Forms & validation
+  flutter_form_builder: ^9.3.0
+  form_builder_validators: ^10.0.1
+
+  # UI helpers
+  flutter_slidable: ^3.1.0
+  intl: ^0.19.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  flutter_gen_runner: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  generate: true
+
+  assets:
+    - assets/images/
+
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Regular.ttf
+        - asset: assets/fonts/Poppins-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Poppins-Bold.ttf
+          weight: 700
