@@ -14,6 +14,23 @@ class CommandeItem {
     required this.quantite,
     required this.prixUnitaire,
   });
+  CommandeItem copyWith({
+    String? id,
+    String? commandeId,
+    String? produitId,
+    String? produitNom,
+    int? quantite,
+    double? prixUnitaire,
+  }) {
+  return CommandeItem(
+    id: id ?? this.id,
+    commandeId: commandeId ?? this.commandeId,
+    produitId: produitId ?? this.produitId,
+    produitNom: produitNom ?? this.produitNom,
+    quantite: quantite ?? this.quantite,
+    prixUnitaire: prixUnitaire ?? this.prixUnitaire,
+    );
+  }
 
   double get sousTotal => quantite * prixUnitaire;
 
