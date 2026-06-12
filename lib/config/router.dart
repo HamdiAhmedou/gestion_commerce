@@ -9,7 +9,7 @@ import 'package:gestion_commerce/views/screens/commandes/commandes_screen.dart';
 import 'package:gestion_commerce/views/screens/commandes/commande_form_screen.dart';
 import 'package:gestion_commerce/models/produit.dart';
 import 'package:gestion_commerce/models/client.dart';
-
+import 'package:gestion_commerce/models/commande.dart';
 class AppRouter {
   static const dashboard = '/';
   static const produits = '/produits';
@@ -78,10 +78,11 @@ class AppRouter {
         pageBuilder: (context, state) =>
             _modal(state, const CommandeFormScreen()),
       ),
-      GoRoute(
+            GoRoute(
         path: commandeDetail,
         pageBuilder: (context, state) {
-          return _modal(state, const CommandeFormScreen());
+          final commande = state.extra as Commande;
+          return _modal(state, CommandeFormScreen(commande: commande));
         },
       ),
     ],

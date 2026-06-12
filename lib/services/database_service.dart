@@ -216,9 +216,10 @@ class DatabaseService {
     for (final item in commande.items) {
       await db.insert(
         AppConstants.tableCommandeItems,
-       item.copyWith(commandeId: id.toString()).toMap(),
+        item.copyWith(commandeId: id.toString()).toMap(),
       );
     }
+    await decrementStock(commande.items);
     return id;
   }
 
@@ -231,9 +232,10 @@ class DatabaseService {
       whereArgs: [id],
     );
   }
-
   Future<int> deleteCommande(String id) async {
     final db = await database;
+    final items = await getCommandeItems(id);
+    await restoreStock(items);
     await db.delete(
       AppConstants.tableCommandeItems,
       where: 'commande_id = ?',
@@ -256,6 +258,31 @@ class DatabaseService {
       whereArgs: [commandeId],
     );
     return maps.map(CommandeItem.fromMap).toList();
+  }
+  // ─────────────────────────── STOCK ──────────────────────────────
+
+  Future<void> decrementStock(List<CommandeItem> items) async {
+    final db = await database;
+    final batch = db.batch();
+    for (final item in items) {
+      batch.rawUpdate(
+        'UPDATE ${AppConstants.tableProduits} SET stock = stock - ? WHERE id = ?',
+        [item.quantite, item.produitId],
+      );
+    }
+    await batch.commit(noResult: true);
+  }
+
+  Future<void> restoreStock(List<CommandeItem> items) async {
+    final db = await database;
+    final batch = db.batch();
+    for (final item in items) {
+      batch.rawUpdate(
+        'UPDATE ${AppConstants.tableProduits} SET stock = stock + ? WHERE id = ?',
+        [item.quantite, item.produitId],
+      );
+    }
+    await batch.commit(noResult: true);
   }
 
   // ─────────────────────────── DASHBOARD ──────────────────────────

@@ -46,13 +46,26 @@ class CommandeController extends ChangeNotifier {
       return false;
     }
   }
-
   // ── Update statut ─────────────────────────────────────────────────
   Future<bool> updateStatut(String id, StatutCommande statut) async {
     _setState(CommandeState.loading);
     try {
-      await _db.updateCommandeStatut(id, statut.value);
       final index = _commandes.indexWhere((c) => c.id == id);
+      final ancien = index != -1 ? _commandes[index].statut : null;
+
+      if (ancien != null && ancien != statut) {
+        if (statut == StatutCommande.annulee &&
+            ancien != StatutCommande.annulee) {
+          // Order cancelled → give the stock back
+          await _db.restoreStock(_commandes[index].items);
+        } else if (ancien == StatutCommande.annulee &&
+            statut != StatutCommande.annulee) {
+          // Order reactivated from cancelled → take stock again
+          await _db.decrementStock(_commandes[index].items);
+        }
+      }
+
+      await _db.updateCommandeStatut(id, statut.value);
       if (index != -1) {
         _commandes[index] = _commandes[index].copyWith(statut: statut);
       }
