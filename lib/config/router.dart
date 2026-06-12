@@ -72,7 +72,7 @@ class AppRouter {
       // ── Commandes ──────────────────────────────────────────────
       GoRoute(
         path: commandes,
-        pageBuilder: (context, state) => _slide(state, const CommandesScreen()),
+        pageBuilder: (context, state) => _slide(state, CommandesScreen()),
       ),
       GoRoute(
         path: commandeAdd,
