@@ -9,18 +9,17 @@ import 'package:gestion_commerce/views/screens/commandes/commandes_screen.dart';
 import 'package:gestion_commerce/views/screens/commandes/commande_form_screen.dart';
 import 'package:gestion_commerce/models/produit.dart';
 import 'package:gestion_commerce/models/client.dart';
-import 'package:gestion_commerce/models/commande.dart';
 
 class AppRouter {
-  static const dashboard      = '/';
-  static const produits       = '/produits';
-  static const produitAdd     = '/produits/add';
-  static const produitEdit    = '/produits/edit';
-  static const clients        = '/clients';
-  static const clientAdd      = '/clients/add';
-  static const clientEdit     = '/clients/edit';
-  static const commandes      = '/commandes';
-  static const commandeAdd    = '/commandes/add';
+  static const dashboard = '/';
+  static const produits = '/produits';
+  static const produitAdd = '/produits/add';
+  static const produitEdit = '/produits/edit';
+  static const clients = '/clients';
+  static const clientAdd = '/clients/add';
+  static const clientEdit = '/clients/edit';
+  static const commandes = '/commandes';
+  static const commandeAdd = '/commandes/add';
   static const commandeDetail = '/commandes/detail';
 
   static final router = GoRouter(
@@ -72,7 +71,7 @@ class AppRouter {
       // ── Commandes ──────────────────────────────────────────────
       GoRoute(
         path: commandes,
-        pageBuilder: (context, state) => _slide(state, CommandesScreen()),
+        pageBuilder: (context, state) => _slide(state, const CommandesScreen()),
       ),
       GoRoute(
         path: commandeAdd,
@@ -82,17 +81,14 @@ class AppRouter {
       GoRoute(
         path: commandeDetail,
         pageBuilder: (context, state) {
-          final commande = state.extra as Commande;
-          return _modal(state, CommandeFormScreen(commande: commande));
+          return _modal(state, const CommandeFormScreen());
         },
       ),
     ],
 
     errorPageBuilder: (context, state) => MaterialPage(
       child: Scaffold(
-        body: Center(
-          child: Text('Page non trouvée: ${state.uri}'),
-        ),
+        body: Center(child: Text('Page non trouvée: ${state.uri}')),
       ),
     ),
   );
@@ -105,13 +101,13 @@ class AppRouter {
       transitionDuration: const Duration(milliseconds: 280),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         return SlideTransition(
-          position: Tween<Offset>(
-            begin: const Offset(1.0, 0.0),
-            end: Offset.zero,
-          ).animate(CurvedAnimation(
-            parent: animation,
-            curve: Curves.easeOutCubic,
-          )),
+          position:
+              Tween<Offset>(
+                begin: const Offset(1.0, 0.0),
+                end: Offset.zero,
+              ).animate(
+                CurvedAnimation(parent: animation, curve: Curves.easeOutCubic),
+              ),
           child: child,
         );
       },
@@ -125,13 +121,13 @@ class AppRouter {
       transitionDuration: const Duration(milliseconds: 320),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         return SlideTransition(
-          position: Tween<Offset>(
-            begin: const Offset(0.0, 1.0),
-            end: Offset.zero,
-          ).animate(CurvedAnimation(
-            parent: animation,
-            curve: Curves.easeOutCubic,
-          )),
+          position:
+              Tween<Offset>(
+                begin: const Offset(0.0, 1.0),
+                end: Offset.zero,
+              ).animate(
+                CurvedAnimation(parent: animation, curve: Curves.easeOutCubic),
+              ),
           child: FadeTransition(opacity: animation, child: child),
         );
       },
