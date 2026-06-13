@@ -301,6 +301,12 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'Chiffre d\'affaires'**
   String get chiffreAffaires;
+
+  /// No description provided for @nouvelleCommande.
+  ///
+  /// In fr, this message translates to:
+  /// **'Nouvelle commande'**
+  String get nouvelleCommande;
 }
 
 class _AppLocalizationsDelegate

@@ -15,8 +15,8 @@ import 'package:gestion_commerce/l10n/app_localizations.dart';
 // ── Draft line item (create mode only) ─────────────────────────────
 class _DraftItem {
   final Produit produit;
-  int quantite;
-  _DraftItem({required this.produit, this.quantite = 1});
+  int quantite = 1;
+  _DraftItem({required this.produit});
   double get sousTotal => produit.prix * quantite;
 }
 

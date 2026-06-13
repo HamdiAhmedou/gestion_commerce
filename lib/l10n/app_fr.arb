@@ -33,5 +33,6 @@
   "totalProduits": "Total produits",
   "totalClients": "Total clients",
   "totalCommandes": "Total commandes",
-  "chiffreAffaires": "Chiffre d'affaires"
+  "chiffreAffaires": "Chiffre d'affaires",
+  "nouvelleCommande": "Nouvelle commande"
 }

@@ -283,12 +283,13 @@ class _CommandesScreenState extends State<CommandesScreen> {
   }
 
   Widget _buildFAB(BuildContext context) {
-    return FloatingActionButton.extended(
+    final l10n = AppLocalizations.of(context)!;
+      return FloatingActionButton.extended(
       onPressed: () => context.push(AppRouter.commandeAdd),
       icon: const Icon(Icons.add_shopping_cart_rounded),
-      label: const Text(
-        'Nouvelle commande',
-        style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.w600),
+      label: Text(
+        l10n.nouvelleCommande,
+        style: const TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.w600),
       ),
       backgroundColor: AppTheme.primary,
       foregroundColor: Colors.white,

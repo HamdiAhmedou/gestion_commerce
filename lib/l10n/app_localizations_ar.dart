@@ -109,4 +109,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get chiffreAffaires => 'رقم الأعمال';
+
+  @override
+  String get nouvelleCommande => 'طلب جديد';
 }

@@ -367,7 +367,7 @@ class _StatsGrid extends StatelessWidget {
         crossAxisCount:   2,
         crossAxisSpacing: 12,
         mainAxisSpacing:  12,
-        childAspectRatio: 1.5,
+        childAspectRatio: 1.35,
       ),
       itemCount:   cards.length,
       itemBuilder: (_, i) => _StatCard(data: cards[i], isDark: isDark),
@@ -396,7 +396,7 @@ class _StatCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: isDark ? const Color(0xFF1E1E30) : Colors.white,
         borderRadius: BorderRadius.circular(16),

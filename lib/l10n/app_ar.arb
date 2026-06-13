@@ -33,5 +33,6 @@
   "totalProduits": "إجمالي المنتجات",
   "totalClients": "إجمالي العملاء",
   "totalCommandes": "إجمالي الطلبات",
-  "chiffreAffaires": "رقم الأعمال"
+  "chiffreAffaires": "رقم الأعمال",
+  "nouvelleCommande": "طلب جديد"
 }

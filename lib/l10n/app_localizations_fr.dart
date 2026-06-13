@@ -109,4 +109,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get chiffreAffaires => 'Chiffre d\'affaires';
+
+  @override
+  String get nouvelleCommande => 'Nouvelle commande';
 }
