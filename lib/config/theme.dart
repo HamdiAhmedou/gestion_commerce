@@ -334,7 +334,7 @@ class AppTheme {
         backgroundColor: primary,
         foregroundColor: Colors.white,
         elevation: 4,
-        shape: CircleBorder(),
+        
       ),
 
       navigationBarTheme: NavigationBarThemeData(
